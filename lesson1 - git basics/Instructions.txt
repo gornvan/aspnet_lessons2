@@ -12,3 +12,6 @@ git commit -m 'start writing instructions for git: git clone ; git config'
 
 # see the history!
 git log
+
+# fetch new commits from remote!
+git [remote]
