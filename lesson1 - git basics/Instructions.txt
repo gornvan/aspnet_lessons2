@@ -1,0 +1,9 @@
+# zero - create the repo
+
+
+# first - clone your repo
+git clone https://github.com/gornvan/dotnet_lessons2.git
+
+git config --global user.name <name>
+git config --global user.email <email>
+
