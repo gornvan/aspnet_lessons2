@@ -15,3 +15,14 @@ git log
 
 # fetch new commits from remote!
 git [remote]
+
+# DANGER: DELETE ALL CURRENT CHANGES
+# git reset --hard
+
+# Less danger: put all the current change into "STASH"
+git stash -u
+
+# show stashes:
+git stash list
+# apply stash:
+git stash apply <stash id>
