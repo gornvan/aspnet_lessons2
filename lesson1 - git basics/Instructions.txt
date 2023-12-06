@@ -9,3 +9,6 @@ git config --global user.email <email>
 
 git add .
 git commit -m 'start writing instructions for git: git clone ; git config'
+
+# see the history!
+git log
