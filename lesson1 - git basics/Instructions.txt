@@ -7,3 +7,5 @@ git clone https://github.com/gornvan/dotnet_lessons2.git
 git config --global user.name <name>
 git config --global user.email <email>
 
+git add .
+git commit -m 'start writing instructions for git: git clone ; git config'
