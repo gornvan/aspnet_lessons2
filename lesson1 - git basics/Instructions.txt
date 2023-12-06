@@ -9,3 +9,8 @@ git config --global user.email <email>
 
 git add .
 git commit -m 'start writing instructions for git: git clone ; git config'
+
+# revert something and work on another thing - CREATE A BRANCH FROM A COMMIT
+git checkout <commit hash>
+# variant1: git branch <branchName> ; git checkout <branchName>
+# variant2: git checkout -b <branchName>
