@@ -1,0 +1,3 @@
+This is the first line to be merged
+
+This is the second line to be merged
