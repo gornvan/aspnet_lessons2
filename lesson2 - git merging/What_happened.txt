@@ -1,0 +1,31 @@
+# Developer 1 - creates Lines 1 and 2
+# another way: git checkout -b task-1
+git branch task-1
+git checkout task-1
+git add "merge demo.txt" 
+git commit -m 'Task 1: add lines 1&2'
+git push --set-upstream gh task-1
+# Developer 1 - creates Pull Request to Main
+
+# Developer 2 - creates Line 3
+git branch task-2
+git checkout task-2
+git add "merge demo.txt"
+git commit -m 'Task 2: add line 3'
+git push --set-upstream gh task-2
+# Developer 2 - creates Pull Request to Main
+
+
+# Developer 3 - MERGES task-2
+# PR of Dev 1 is now CONFLICTING
+# Dev 1 resolves the conflict!
+git fetch
+git merge gh/main # OR git rebase main
+# resolves the conflict
+git add "merge demo.txt"
+git commit -m 'merge main into task-1, resolve conflicts'
+git push
+
+
+
+
