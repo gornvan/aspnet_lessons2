@@ -3,5 +3,6 @@
     public interface IMover
     {
         double Speed_MetersPerSecond { get; }
+        double GetSpeed_MetersPerSecond();
     }
 }
