@@ -4,7 +4,15 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            var random = new Random();
+
+            var speed = random.Next() * 10 + 5;
+
+            var lovelyDistance = random.Next() * 100 + 15;
+
+            var cat = new Cat(lovelyDistance, speed);
+
+            Console.WriteLine("Would the cat like to run 50m: " + cat.WantToRun([50]));
         }
     }
 }
