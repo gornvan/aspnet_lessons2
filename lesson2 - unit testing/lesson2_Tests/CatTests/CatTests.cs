@@ -91,6 +91,8 @@ namespace lesson2_Tests.CatTests
 
             // assert
             Assert.Equal(expectedCatCatch, catCatch);
+                // check that the mocked method was called ONCE
+            fasterPrey.Verify(prey => prey.GetSpeed_MetersPerSecond(), Times.Once);
         }
     }
 }
