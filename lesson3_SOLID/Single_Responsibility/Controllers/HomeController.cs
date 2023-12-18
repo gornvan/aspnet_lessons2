@@ -15,6 +15,12 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        // ANTIPATTERN
+        // Controller should only handle the data forwading (converting) between Browser and the Service
+        if (DateTime.Now.DayOfWeek == DayOfWeek.Monday)
+        {
+            return NotFound();
+        }
         return View();
     }
 
