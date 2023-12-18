@@ -1,4 +1,4 @@
-namespace Single_Responsibility.Models;
+namespace SOLID.Models;
 
 public class ErrorViewModel
 {

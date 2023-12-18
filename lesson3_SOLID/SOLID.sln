@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Single_Responsibility", "Single_Responsibility\Single_Responsibility.csproj", "{010F68B2-D136-4B49-A14E-A5D398CC6DCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SOLID", "Single_Responsibility\SOLID.csproj", "{010F68B2-D136-4B49-A14E-A5D398CC6DCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
