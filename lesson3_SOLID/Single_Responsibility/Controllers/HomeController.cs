@@ -9,10 +9,18 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger /* add IBriefObjectDataService as construction depenecy */)
     {
         _logger = logger;
     }
+
+    [ForbiddenDayOfWeekFilterAtribute(DayOfWeek.Monday /* another example of OPEN-CLOSED ignorance - the Day is not configurable */)]
+    public IActionResult Objects()
+    {
+        var data = ""; // use IBriefObjectDataService instead
+        return Content(data);
+    }
+
 
     [ForbiddenDayOfWeekFilterAtribute(DayOfWeek.Monday /* another example of OPEN-CLOSED ignorance - the Day is not configurable */)]
     public IActionResult Index()
