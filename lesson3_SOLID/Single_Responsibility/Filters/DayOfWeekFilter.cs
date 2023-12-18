@@ -6,6 +6,9 @@ namespace SOLID.Filters
     {
         private DayOfWeek _dayOfWeek;
         public ForbiddenDayOfWeekFilterAtribute(DayOfWeek dayOfWeek) {
+            // Bad Practice - the module should be able to change its behaviour without changing its code
+            // dayOfWeek = DayOfWeek.Monday
+
             _dayOfWeek = dayOfWeek;
         }
 

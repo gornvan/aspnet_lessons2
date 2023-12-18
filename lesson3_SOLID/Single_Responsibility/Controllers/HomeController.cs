@@ -14,7 +14,7 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    [ForbiddenDayOfWeekFilterAtribute(DayOfWeek.Monday)]
+    [ForbiddenDayOfWeekFilterAtribute(DayOfWeek.Monday /* another example of OPEN-CLOSED ignorance - the Day is not configurable */)]
     public IActionResult Index()
     {
         //// ANTIPATTERN
