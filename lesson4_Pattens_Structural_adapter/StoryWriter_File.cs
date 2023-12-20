@@ -5,8 +5,8 @@ namespace lesson4_Pattens_Structural_adapter
     {
         private StreamWriter _writer;
 
-        public StoryWriter_File(string fileName) {
-            _writer = new StreamWriter(fileName);
+        public StoryWriter_File(StreamWriter writer) {
+            _writer = writer;
         }
 
         public async Task WriteChapterAsync(string chapterName, string text)
