@@ -1,0 +1,6 @@
+@lesson5_Chain_Of_Responsibility_HostAddress = http://localhost:5191
+
+GET {{lesson5_Chain_Of_Responsibility_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
