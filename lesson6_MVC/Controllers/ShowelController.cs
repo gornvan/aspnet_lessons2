@@ -5,10 +5,15 @@ namespace lesson6_MVC.Controllers
 {
     public class ShowelController : Controller
     {
+        static List<ShowelViewModel> Showels = new List<ShowelViewModel>();
+
+
         // GET: ShowelController
         public ActionResult Index()
         {
-            return View();
+            // the View method will search for the cshtml view implementation
+            // in /Views/{controller}/{action}.cshtml
+            return View(Showels);
         }
 
         // GET: ShowelController/Details/5
@@ -30,7 +35,11 @@ namespace lesson6_MVC.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                showel.Id = Showels.Count;
+
+                Showels.Add(showel);
+
+				return RedirectToAction(nameof(Index));
             }
             catch
             {
