@@ -13,13 +13,15 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    [HttpGet]
+    // custom path for endpoint - conflicts with the conventional routing
+    // [HttpGet("/home")]
     public IActionResult Index()
     {
         return View();
     }
 
-    [HttpGet]
+    // custom path for endpoint - conflicts with the conventional routing
+    // [HttpGet("/privacy")]
     public IActionResult Privacy()
     {
         return View();
