@@ -22,7 +22,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "empty",
-        pattern: "",
+        pattern: "/fun",
         new
         {
             controller = "Home",

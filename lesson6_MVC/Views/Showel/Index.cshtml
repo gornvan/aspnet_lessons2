@@ -1,0 +1,12 @@
+﻿@	using lesson6_MVC.Views
+@model List<ShowelViewModel>;
+
+
+@foreach (var m in Model) {
+	<div style="display:block">
+		Showel #@m.Id of type "@m.Type" has lengh of @(m.HandleLength)cm
+		<a href="@Url.Action(nameof(ShowelController.Details))"> view </a>
+		<a href="@Url.Action(nameof(ShowelController.Edit))> edit </a>
+		<a href="@Url.Action(nameof(ShowelController.Delete))> delete </a>
+	</div>
+}
