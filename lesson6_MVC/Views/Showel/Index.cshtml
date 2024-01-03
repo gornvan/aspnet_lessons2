@@ -1,4 +1,4 @@
-﻿@	using lesson6_MVC.Views
+﻿@using lesson6_MVC.Controllers
 @model List<ShowelViewModel>;
 
 
@@ -10,3 +10,8 @@
 		<a href="@Url.Action(nameof(ShowelController.Delete))> delete </a>
 	</div>
 }
+
+
+<div style="display:block">
+	<a href="@Url.Action(nameof(ShowelController.Create))"> Create </a>
+</div>
