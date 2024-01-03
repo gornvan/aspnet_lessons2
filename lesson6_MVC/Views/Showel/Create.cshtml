@@ -1,0 +1,29 @@
+﻿@model lesson6_MVC.Models.ShowelViewModel
+@using lesson6_MVC.Controllers
+@using lesson6_MVC.Enums
+@using System.Linq
+
+<h2>Create Showel</h2>
+@using (Html.BeginForm(
+    actionName: nameof(ShowelController.Create),
+    controllerName: Html.ViewContext.RouteData.Values["controller"].ToString(),
+    FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Type)
+        @Html.DropDownListFor(model => model.Type,
+            Html.GetEnumSelectList<ShowelType>(),
+            null)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.HandleLength)
+        @Html.EditorFor(model => model.HandleLength)
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+}
