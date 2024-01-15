@@ -30,12 +30,36 @@ namespace lesson8_WebApi.Controllers
             .ToArray();
         }
 
+
+        [Produces("application/json", new[] { "text/plain" })]
         [HttpGet(template: "{daysAhead}", Name = "GetWeathForecastForConcreteDayAhead")]
-        public WeatherForecast Get(int daysAhead) => new WeatherForecast
+        public IActionResult Get(int daysAhead)
         {
-            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(daysAhead)),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-        };
+            var forecast = new WeatherForecast
+            {
+                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(daysAhead)),
+                TemperatureC = Random.Shared.Next(-20, 55),
+                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+            };
+
+
+            var accept = Request.GetTypedHeaders().Accept;
+            switch (accept[0].MediaType.ToString())
+            {
+                case "application/json":
+                case "*/*":
+                default:
+                    return new JsonResult(forecast);
+
+                case "text/plain":
+                    return Content(
+                        $"""
+                        Date: {forecast.Date};
+                        The temperature will be {forecast.TemperatureC} Celcius;
+                        It will feel {forecast.Summary}.
+                        """
+                        );
+            }
+        }
     }
 }
