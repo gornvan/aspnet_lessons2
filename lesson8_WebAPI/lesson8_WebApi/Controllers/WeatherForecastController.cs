@@ -19,19 +19,25 @@ namespace lesson8_WebApi.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get(int minTemperatureC, int maxTemperatureC)
+        public IEnumerable<WeatherForecast> Get(int minTemperatureC, int maxTemperatureC, int pageSize, int pageNumber)
         {
-            return Enumerable.Range(1, 500).Select(index => new WeatherForecast
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .Where(forecast => 
-                forecast.TemperatureC >= minTemperatureC 
-                &&
-                forecast.TemperatureC <= maxTemperatureC)
-            .ToArray();
+            return Enumerable.Range(1, 1024*1024*1024 /* Emulating a LARGE source of data which we will not consume in full thanks to Pagination */)
+                .Select(index => 
+                new WeatherForecast
+                {
+                    Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+                    TemperatureC = Random.Shared.Next(-20, 55),
+                    Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+                })
+                // Always filter BEFORE paging
+                .Where(forecast =>
+                    forecast.TemperatureC >= minTemperatureC
+                    &&
+                    forecast.TemperatureC <= maxTemperatureC)
+                // Always page AFTER filtering
+                .Skip(pageSize * (pageNumber - 1))
+                .Take(pageSize)
+                .ToArray();
         }
 
 
