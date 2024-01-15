@@ -1,0 +1,31 @@
+﻿@using lesson7_HtmlHelpers.HtmlHelpers;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    var nextFiveDays = Enumerable.Range(0, 5)
+        .Select(dayOffset => DateTime.Now.AddDays(dayOffset))
+        .Select(date => date.ToShortDateString())
+        .ToArray();
+}
+<h3> the next five dates: </h3>
+@Html.CreateList(nextFiveDays)
+
+@Html.CreateDropdownActoinButton(nextFiveDays)
+
+
+<h1> Boostrap table</h1>
+https://getbootstrap.com/docs/5.1/layout/grid/
+<div class="container">
+	<div class="row">
+		<div class="col">1 из 2</div>
+		<div class="col">2 из 2</div>
+	</div>
+	<div class="row">
+		<div class="col">1 из 3</div>
+		<div class="col">2 из 3</div>
+		<div class="col">3 из 3</div>
+	</div>
+</div>
