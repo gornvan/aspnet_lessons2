@@ -17,6 +17,11 @@ namespace lesson8_WebApi
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddResponseCompression(options =>
+            {
+                options.EnableForHttps = true;
+            });
+
             var app = builder.Build();
 
             ApplyApiVersionRoutePrefix(app);
@@ -34,6 +39,7 @@ namespace lesson8_WebApi
 
             app.MapControllers();
 
+            app.UseResponseCompression();
             app.Run();
         }
 
