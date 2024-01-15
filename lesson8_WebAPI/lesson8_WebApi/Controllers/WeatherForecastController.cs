@@ -29,5 +29,13 @@ namespace lesson8_WebApi.Controllers
             })
             .ToArray();
         }
+
+        [HttpGet(template: "{daysAhead}", Name = "GetWeathForecastForConcreteDayAhead")]
+        public WeatherForecast Get(int daysAhead) => new WeatherForecast
+        {
+            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(daysAhead)),
+            TemperatureC = Random.Shared.Next(-20, 55),
+            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+        };
     }
 }
