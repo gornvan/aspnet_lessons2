@@ -19,14 +19,18 @@ namespace lesson8_WebApi.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        public IEnumerable<WeatherForecast> Get(int minTemperatureC, int maxTemperatureC)
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            return Enumerable.Range(1, 500).Select(index => new WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
                 TemperatureC = Random.Shared.Next(-20, 55),
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
+            .Where(forecast => 
+                forecast.TemperatureC >= minTemperatureC 
+                &&
+                forecast.TemperatureC <= maxTemperatureC)
             .ToArray();
         }
 
@@ -41,7 +45,6 @@ namespace lesson8_WebApi.Controllers
                 TemperatureC = Random.Shared.Next(-20, 55),
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             };
-
 
             var accept = Request.GetTypedHeaders().Accept;
             switch (accept[0].MediaType.ToString())
