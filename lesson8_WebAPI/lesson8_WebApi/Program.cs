@@ -1,4 +1,7 @@
 
+using lesson8_WebApi.Middlewares;
+using System.Reflection;
+
 namespace lesson8_WebApi
 {
     public class Program
@@ -16,6 +19,8 @@ namespace lesson8_WebApi
 
             var app = builder.Build();
 
+            ApplyApiVersionRoutePrefix(app);
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
@@ -27,10 +32,17 @@ namespace lesson8_WebApi
 
             app.UseAuthorization();
 
-
             app.MapControllers();
 
             app.Run();
+        }
+
+        private static void ApplyApiVersionRoutePrefix(WebApplication app)
+        {
+            var appVersion = Assembly.GetExecutingAssembly().GetName().Version;
+            var pathPrefix = $"/api/{appVersion}";
+            app.UseMiddleware<GlobalRoutePrefixMiddleware>(pathPrefix);
+            app.UsePathBase(pathPrefix);
         }
     }
 }
