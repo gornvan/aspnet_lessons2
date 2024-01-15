@@ -5,9 +5,9 @@
 @foreach (var m in Model) {
 	<div style="display:block">
 		Showel #@m.Id of type "@m.Type" has lengh of @(m.HandleLength)cm
-		<a href="@Url.Action(nameof(ShowelController.Details))"> view </a>
-		<a href="@Url.Action(nameof(ShowelController.Edit))> edit </a>
-		<a href="@Url.Action(nameof(ShowelController.Delete))> delete </a>
+		<a href="@Url.Action(nameof(ShowelController.Details), new {id = m.Id})"> view </a>
+		<a href="@Url.Action(nameof(ShowelController.Edit), new {id = m.Id})>"> edit </a>
+		<a href="@Url.Action(nameof(ShowelController.Delete), new {id = m.Id})"> delete </a>
 	</div>
 }
 

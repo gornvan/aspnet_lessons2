@@ -1,0 +1,10 @@
+﻿@model lesson6_MVC.Models.ShowelViewModel
+@using lesson6_MVC.Controllers
+@using lesson6_MVC.Enums
+@using System.Linq
+
+<p>@ViewBag.HelloMessage</p>
+
+<h2>Showel #@Model.Id details</h2>
+<p>The showel is @Model.Type.ToString()</p>
+<p>The handle length is @(Model.HandleLength)cm</p>

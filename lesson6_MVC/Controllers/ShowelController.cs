@@ -17,9 +17,17 @@ namespace lesson6_MVC.Controllers
         }
 
         // GET: ShowelController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            return View();
+            if (! id.HasValue) {
+                return NotFound("Empty id supplied!");
+            }
+            
+            ViewBag.HelloMessage = "Hello it's the Details page!";
+
+            var showel = Showels[id.Value];
+
+            return View(showel);
         }
 
         // GET: ShowelController/Create
@@ -39,7 +47,7 @@ namespace lesson6_MVC.Controllers
 
                 Showels.Add(showel);
 
-				return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));
             }
             catch
             {
@@ -87,6 +95,20 @@ namespace lesson6_MVC.Controllers
             {
                 return View();
             }
+        }
+
+        public JsonResult GetAllShowels() {
+            return Json(Showels);
+        }
+
+        public ActionResult<List<ShowelViewModel>> GetAllShowels2()
+        {
+            return Ok(Showels);
+        }
+
+        public ContentResult GetAllShowels_c()
+        {
+            return Content("Result content is just text we want to pass to the client, it can be html as well");
         }
     }
 }

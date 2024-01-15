@@ -10,5 +10,7 @@ namespace lesson6_MVC.Models
 
         public int HandleLength { get; set; }
 
+
+        public string BriefInfo => $@"{this.Type} showel, {HandleLength}cm";
     }
 }
