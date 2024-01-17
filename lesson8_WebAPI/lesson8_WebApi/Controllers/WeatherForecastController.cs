@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace lesson8_WebApi.Controllers
 {
@@ -19,10 +20,15 @@ namespace lesson8_WebApi.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get(int minTemperatureC, int maxTemperatureC, int pageSize, int pageNumber)
+        public IEnumerable<WeatherForecast?> Get(
+            int minTemperatureC,
+            int maxTemperatureC,
+            int pageSize = 5,
+            int pageNumber = 1,
+            [FromQuery] string[]? fields = null)
         {
-            return Enumerable.Range(1, 1024*1024*1024 /* Emulating a LARGE source of data which we will not consume in full thanks to Pagination */)
-                .Select(index => 
+            var unprojectedQuery = Enumerable.Range(1, 1024 * 1024 * 1024 /* Emulating a LARGE source of data which we will not consume in full thanks to Pagination */)
+                .Select(index =>
                 new WeatherForecast
                 {
                     Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
@@ -36,8 +42,34 @@ namespace lesson8_WebApi.Controllers
                     forecast.TemperatureC <= maxTemperatureC)
                 // Always page AFTER filtering
                 .Skip(pageSize * (pageNumber - 1))
-                .Take(pageSize)
-                .ToArray();
+                .Take(pageSize);
+
+            var projectedQuery = fields == null
+                ? unprojectedQuery
+                : unprojectedQuery.Select(forecast => MutateObjectToGetProjection(forecast, fields));
+
+            return projectedQuery.ToList();
+        }
+
+        private static T? MutateObjectToGetProjection<T>(T? originalObject, string[] fieldNames) where T: class
+        {
+            if (originalObject == default(T))
+            {
+                return originalObject;
+            }
+
+            var props = originalObject.GetType().GetProperties().Where(p => p.IsPubliclyWritable());
+
+            foreach (var prop in props)
+            {
+                if (!fieldNames.Any(
+                    fn => prop.Name.Equals(fn, StringComparison.OrdinalIgnoreCase))
+                )
+                {
+                    prop.SetValue(originalObject, null);
+                }
+            }
+            return originalObject;
         }
 
 
