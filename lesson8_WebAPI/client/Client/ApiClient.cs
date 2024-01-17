@@ -1,15 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text.RegularExpressions;
-using System.IO;
-using System.Web;
-using System.Linq;
-using System.Net;
-using System.Text;
-using Newtonsoft.Json;
 using RestSharp;
-using RestSharp.Extensions;
+using System.Text.Json;
+using System.Text.RegularExpressions;
+using System.Web;
 
 namespace IO.Swagger.Client
 {
@@ -89,7 +81,7 @@ namespace IO.Swagger.Client
 
             // add file parameter, if any
             foreach(var param in fileParams)
-                request.AddFile(param.Value.Name, param.Value.Writer, param.Value.FileName, param.Value.ContentType);
+                request.AddFile(param.Value.Name, param.Value.FileName);
 
             if (postBody != null) // http body (model) parameter
                 request.AddParameter("application/json", postBody, ParameterType.RequestBody);
@@ -116,7 +108,7 @@ namespace IO.Swagger.Client
         /// <returns>Escaped string.</returns>
         public string EscapeString(string str)
         {
-            return RestSharp.Contrib.HttpUtility.UrlEncode(str);
+            return HttpUtility.UrlEncode(str);
         }
     
         /// <summary>
@@ -128,9 +120,9 @@ namespace IO.Swagger.Client
         public FileParameter ParameterToFile(string name, Stream stream)
         {
             if (stream is FileStream)
-                return FileParameter.Create(name, stream.ReadAsBytes(), Path.GetFileName(((FileStream)stream).Name));
+                return FileParameter.Create(name, () => stream, Path.GetFileName(((FileStream)stream).Name));
             else
-                return FileParameter.Create(name, stream.ReadAsBytes(), "no_file_name_provided");
+                return FileParameter.Create(name, () => stream, "no_file_name_provided");
         }
     
         /// <summary>
@@ -161,7 +153,7 @@ namespace IO.Swagger.Client
         /// <param name="type">Object type.</param>
         /// <param name="headers">HTTP headers.</param>
         /// <returns>Object representation of the JSON string.</returns>
-        public object Deserialize(string content, Type type, IList<Parameter> headers=null)
+        public object? Deserialize(string content, Type type, IReadOnlyCollection<HeaderParameter> headers=null)
         {
             if (type == typeof(Object)) // return an object
             {
@@ -200,7 +192,7 @@ namespace IO.Swagger.Client
             // at this point, it must be a model (json)
             try
             {
-                return JsonConvert.DeserializeObject(content, type);
+                return JsonSerializer.Deserialize(content, type);
             }
             catch (IOException e)
             {
@@ -213,11 +205,11 @@ namespace IO.Swagger.Client
         /// </summary>
         /// <param name="obj">Object.</param>
         /// <returns>JSON string.</returns>
-        public string Serialize(object obj)
+        public string? Serialize(object obj)
         {
             try
             {
-                return obj != null ? JsonConvert.SerializeObject(obj) : null;
+                return obj != null ? JsonSerializer.Serialize(obj) : null;
             }
             catch (Exception e)
             {
