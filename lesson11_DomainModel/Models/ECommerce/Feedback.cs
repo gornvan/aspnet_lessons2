@@ -1,6 +1,6 @@
 ﻿namespace lesson11_FabricMarket_DomainModel.Models.ECommerce
 {
-    public class Feedback
+    public class Feedback : Entity<long>
     {
         public required Order Order { get; set; }
         public required Product Product { get; set; }

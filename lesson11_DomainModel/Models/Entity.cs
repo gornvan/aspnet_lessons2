@@ -2,6 +2,6 @@
 {
     public class Entity<TIdentifier>
     {
-        public TIdentifier Id { get; set; }
+        public TIdentifier? Id { get; set; }
     }
 }

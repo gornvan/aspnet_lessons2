@@ -2,7 +2,7 @@
 
 namespace lesson11_FabricMarket_DomainModel.Models.ECommerce
 {
-    public class Order
+    public class Order : Entity<long>
     {
         public required User User {get; set;}
         public required DateTime Date {get; set;}

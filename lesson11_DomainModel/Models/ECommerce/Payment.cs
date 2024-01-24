@@ -1,7 +1,7 @@
 ﻿
 namespace lesson11_FabricMarket_DomainModel.Models.ECommerce
 {
-    public class Payment
+    public class Payment : Entity<long>
     {
         public required Order Order { get; set; }
         public required DateTime Date { get; set; }

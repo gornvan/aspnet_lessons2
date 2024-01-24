@@ -2,6 +2,7 @@
 {
     public class SystemSettings
     {
-        public required bool SystemEnabled { get; set; }
+        public required string Name { get; set; }
+        public required string Value { get; set; }
     }
 }
