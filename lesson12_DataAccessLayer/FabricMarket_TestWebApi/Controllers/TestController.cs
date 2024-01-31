@@ -1,7 +1,6 @@
 using FabricMarket_DAL;
 using lesson11_FabricMarket_DomainModel.Models.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Net.Mime;
 
 namespace FabricMarket_TestWebApi.Controllers
 {
