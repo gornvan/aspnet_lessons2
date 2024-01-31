@@ -17,13 +17,14 @@ namespace FabricMarket_DAL
 
         public IDbContextTransaction BeginTransaction()
         {
-            if (_currentTransaction != null)
-            {
-                throw new UnitOfWorkAlreadyInTransactionStateException();
-            }
-            
-            _currentTransaction = _context.Database.BeginTransaction();
+            lock (_context) {
+                if (_currentTransaction != null)
+                {
+                    throw new UnitOfWorkAlreadyInTransactionStateException();
+                }
 
+                _currentTransaction = _context.Database.BeginTransaction();
+            }
             return _currentTransaction;
         }
 
