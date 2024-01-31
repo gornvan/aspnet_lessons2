@@ -7,6 +7,9 @@ namespace FabricMarket_DAL
     public class UnitOfWork : IUnitOfWork
     {
         private readonly DbContext _context;
+
+        private IDbContextTransaction _currentTransaction;
+
         public UnitOfWork(DbContext context)
         {
             _context = context;
@@ -14,7 +17,14 @@ namespace FabricMarket_DAL
 
         public IDbContextTransaction BeginTransaction()
         {
-            return _context.Database.BeginTransaction();
+            if (_currentTransaction != null)
+            {
+                throw new UnitOfWorkAlreadyInTransactionStateException();
+            }
+            
+            _currentTransaction = _context.Database.BeginTransaction();
+
+            return _currentTransaction;
         }
 
         IRepository<TEntity> IUnitOfWork.GetRepository<TEntity>()
