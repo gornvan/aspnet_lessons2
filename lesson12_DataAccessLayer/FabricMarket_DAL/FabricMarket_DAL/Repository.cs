@@ -1,5 +1,5 @@
 ﻿using lesson11_FabricMarket_DomainModel.Models;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace FabricMarket_DAL
 {
@@ -23,12 +23,12 @@ namespace FabricMarket_DAL
 
         public TEntity Create(TEntity entity)
         {
-            return _dbSet.Add(entity);
+            return _dbSet.Add(entity).Entity;
         }
 
         public TEntity Delete(TEntity entity)
         {
-            return _dbSet.Remove(entity);
+            return _dbSet.Remove(entity).Entity;
         }
     }
 }

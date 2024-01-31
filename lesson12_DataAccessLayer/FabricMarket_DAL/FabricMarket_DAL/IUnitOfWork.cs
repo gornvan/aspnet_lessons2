@@ -1,11 +1,11 @@
 ﻿using lesson11_FabricMarket_DomainModel.Models;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace FabricMarket_DAL
 {
     public interface IUnitOfWork
     {
-        DbContextTransaction BeginTransaction();
+        IDbContextTransaction BeginTransaction();
 
         IRepository<TEntity> GetRepository<TEntity>() where TEntity : class, IEntity;
 

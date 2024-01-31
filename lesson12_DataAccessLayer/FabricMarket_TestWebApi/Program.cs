@@ -1,4 +1,3 @@
-
 namespace FabricMarket_TestWebApi
 {
     public class Program
@@ -14,6 +13,7 @@ namespace FabricMarket_TestWebApi
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            Startup.AddSerilog(builder);
             Startup.RegisterDAL(builder.Services);
 
             var app = builder.Build();

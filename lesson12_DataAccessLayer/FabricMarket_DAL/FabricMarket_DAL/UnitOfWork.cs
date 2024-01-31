@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace FabricMarket_DAL
 {
@@ -10,7 +12,7 @@ namespace FabricMarket_DAL
             _context = context;
         }
 
-        public DbContextTransaction BeginTransaction()
+        public IDbContextTransaction BeginTransaction()
         {
             return _context.Database.BeginTransaction();
         }
