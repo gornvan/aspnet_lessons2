@@ -28,7 +28,7 @@ namespace FabricMarket_TestWebApi.Controllers
                 DarkThemeEnabled = true,
                 Phone = "+375 12345678",
             };
-            userSettingsRepo.Create(settingsForNewUser);
+            var linkedSettings = userSettingsRepo.Create(settingsForNewUser);
 
             var user = new User
             {
@@ -38,7 +38,7 @@ namespace FabricMarket_TestWebApi.Controllers
                 Role = UserRoleEnum.Administrator,
                 PasswordHash = "",
                 PasswordSalt = "",
-                UserSettings = settingsForNewUser,
+                UserSettings = linkedSettings,
             };
 
             userRepo.Create(user);
