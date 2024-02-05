@@ -48,7 +48,7 @@ namespace FabricMarket_TestWebApi
         private static bool TestConnection(IServiceCollection services)
         {
             var provider = services.BuildServiceProvider();
-            var logger = provider.GetService<ILogger>();
+            var logger = provider.GetRequiredService<ILogger>();
             logger.Information("Testing the DB connection...");
             
             var context = provider.GetRequiredService<DbContext>();
