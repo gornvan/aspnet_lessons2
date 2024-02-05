@@ -10,7 +10,15 @@ namespace FabricMarket_TestWebApi
     {
         public static void RegisterDAL(IServiceCollection services)
         {
-            services.AddNpgsql<DbContext>("host=localhost;port=5432;database=FabricMarket;Username=postgres;Password=123123");
+            services.AddTransient<DbContextOptions<FabricMarketDbContext>>(provider =>
+            {
+                var builder = new DbContextOptionsBuilder<FabricMarketDbContext>();
+                builder.UseNpgsql("host=localhost;port=5432;database=FabricMarket;Username=postgres;Password=123123");
+                return builder.Options;
+            });
+
+            services.AddScoped<DbContext, FabricMarketDbContext>();
+
             if (!TestConnection(services))
             {
                 throw new DbConnectionException("Test of DB connection failed!");
