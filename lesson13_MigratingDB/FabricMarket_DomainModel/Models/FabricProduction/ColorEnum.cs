@@ -1,6 +1,6 @@
 ﻿namespace lesson11_FabricMarket_DomainModel.Models.FabricProduction
 {
-    public enum Color
+    public enum ColorEnum
     {
         Gold = 1,
         Silver = 2,
