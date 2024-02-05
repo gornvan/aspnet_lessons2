@@ -1,18 +1,21 @@
-﻿using lesson11_FabricMarket_DomainModel.Models.ECommerce;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace FabricMarket_DAL
 {
     public class FabricMarketDbContext : DbContext
     {
+        public FabricMarketDbContext(DbContextOptions<FabricMarketDbContext> options) : base(options)
+        {
+
+        }
 
         // public DbSet<Feedback> Feedbacks;
         // public DbSet<Order> Orders;
         // ...
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnConfiguring(optionsBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
         }
     }
 }
