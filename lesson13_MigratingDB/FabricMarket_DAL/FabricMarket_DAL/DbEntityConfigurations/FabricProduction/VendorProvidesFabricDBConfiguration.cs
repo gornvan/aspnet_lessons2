@@ -8,9 +8,15 @@ namespace FabricMarket_DAL.DbEntityConfigurations.FabricProduction
     {
         public void Configure(EntityTypeBuilder<VendorProvidesFabric> builder)
         {
-            builder.HasOne<Vendor>().WithMany(v => v.Provides);
+            builder.HasKey(vpf => new { vpf.VendorId, vpf.FabricVariantId });
 
-            builder.HasOne<FabricType>().WithMany(ft => ft.Sources);
+            builder.HasOne(vpf => vpf.Vendor)
+                .WithMany(v => v.Provides)
+                .HasForeignKey(vpf => vpf.VendorId);
+
+            builder.HasOne(vpf => vpf.FabricVariant)
+                .WithMany(fv => fv.Sources)
+                .HasForeignKey(vpf => vpf.FabricVariantId);
         }
     }
 }

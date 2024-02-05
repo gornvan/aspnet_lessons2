@@ -8,5 +8,7 @@
         public required ColorEnum Color { get; set; }
         public required double Thickness { get; set; }
         public required double MassPerSquareMeter { get; set; }
+
+        public virtual IEnumerable<VendorProvidesFabric>? Sources { get; set; }
     }
 }

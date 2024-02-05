@@ -8,7 +8,7 @@ namespace FabricMarket_DAL.DbEntityConfigurations.FabricProduction
     {
         public void Configure(EntityTypeBuilder<FabricVariant> builder)
         {
-            builder.HasOne<FabricType>()
+            builder.HasOne(fv => fv.FabricType)
                 .WithMany(ft => ft.Variants);
         }
     }

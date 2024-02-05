@@ -6,7 +6,5 @@
         public required string Description { get; set; }
 
         public virtual IEnumerable<FabricVariant>? Variants { get; set; }
-
-        public virtual IEnumerable<VendorProvidesFabric>? Sources { get; set; }
     }
 }
