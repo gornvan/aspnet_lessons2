@@ -1,6 +1,6 @@
 ﻿namespace lesson11_FabricMarket_DomainModel.Models.Identity
 {
-    public class UserSettings : IEntityWithOwnId
+    public class UserSettings : IEntityWithoutOwnId
     {
         public required User User { get; set; }
         public required string Address { get; set; }

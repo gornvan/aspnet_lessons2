@@ -2,7 +2,7 @@
 
 namespace lesson11_FabricMarket_DomainModel.Models.FabricProduction
 {
-    public class ProductRequiresFabric : IEntityWithOwnId
+    public class ProductRequiresFabric : IEntityWithoutOwnId
     {
         public required FabricVariant FabricVariant { get; set; }
         public required Product Product { get; set; }

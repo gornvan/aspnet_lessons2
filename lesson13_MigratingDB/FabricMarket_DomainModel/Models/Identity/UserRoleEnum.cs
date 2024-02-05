@@ -1,6 +1,6 @@
 ﻿namespace lesson11_FabricMarket_DomainModel.Models.Identity
 {
-    public enum UserRole
+    public enum UserRoleEnum
     {
         Customer = 1,
         Cashier = 2,

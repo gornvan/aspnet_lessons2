@@ -1,6 +1,6 @@
 ﻿namespace lesson11_FabricMarket_DomainModel.Models
 {
-    public interface IEntityWithOwnId : IEntity
+    public interface IEntityWithoutOwnId : IEntity
     {
     }
 }

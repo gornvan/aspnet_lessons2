@@ -6,6 +6,6 @@ namespace lesson11_FabricMarket_DomainModel.Models.ECommerce
     {
         public required User User {get; set;}
         public required DateTime Date {get; set;}
-        public required OrderStatus Status { get; set; }
+        public required OrderStatusEnum Status { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace lesson11_FabricMarket_DomainModel.Models.ECommerce
 {
-    public enum OrderStatus
+    public enum OrderStatusEnum
     {
         Placed = 1,
         Paid = 2,
