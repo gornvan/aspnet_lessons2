@@ -20,14 +20,25 @@ namespace FabricMarket_TestWebApi.Controllers
         public async Task<IActionResult> Get()
         {
             var userRepo = _unitOfWork.GetRepository<User>();
+            var userSettingsRepo = _unitOfWork.GetRepository<UserSettings>();
+
+            var settingsForNewUser = new UserSettings
+            {
+                Address = "Example addreess 333",
+                DarkThemeEnabled = true,
+                Phone = "+375 12345678",
+            };
+            userSettingsRepo.Create(settingsForNewUser);
+
             var user = new User
             {
                 Email = "user@example.com",
                 FirstName = "Test",
                 LastName = "Test",
-                Role = UserRole.Administrator,
+                Role = UserRoleEnum.Administrator,
                 PasswordHash = "",
                 PasswordSalt = "",
+                UserSettings = settingsForNewUser,
             };
 
             userRepo.Create(user);
