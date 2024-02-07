@@ -13,10 +13,11 @@ namespace FabricMarket_TestWebApi
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            Startup.AddSerilog(builder);
-            Startup.RegisterDAL(builder.Services);
+            TestWebApiModule.AddServices(builder);
 
             var app = builder.Build();
+
+            DBInitializer.InitializeDB(app.Services);
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

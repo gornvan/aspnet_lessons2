@@ -6,8 +6,16 @@ using ILogger = Serilog.ILogger;
 
 namespace FabricMarket_TestWebApi
 {
-    public static class Startup
+    public static class TestWebApiModule
     {
+
+        internal static void AddServices(WebApplicationBuilder builder)
+        {
+            AddSerilog(builder);
+            RegisterDAL(builder.Services);
+        }
+
+
         public static void RegisterDAL(IServiceCollection services)
         {
             services.AddTransient<DbContextOptions<FabricMarketDbContext>>(provider =>
@@ -18,11 +26,6 @@ namespace FabricMarket_TestWebApi
             });
 
             services.AddScoped<DbContext, FabricMarketDbContext>();
-
-            if (!TestConnection(services))
-            {
-                throw new DbConnectionException("Test of DB connection failed!");
-            }
 
             services.AddScoped<IUnitOfWork>(prov =>
             {
@@ -51,36 +54,5 @@ namespace FabricMarket_TestWebApi
 
             builder.Services.AddSingleton<ILogger>(logger);
         }
-
-
-        private static bool TestConnection(IServiceCollection services)
-        {
-            var provider = services.BuildServiceProvider();
-            var logger = provider.GetRequiredService<ILogger>();
-            logger.Information("Testing the DB connection...");
-            
-            var context = provider.GetRequiredService<DbContext>();
-
-            try
-            {
-                var createdAnew = context.Database.EnsureCreated();
-                if (createdAnew)
-                {
-                    logger.Information("Successfully created the DB");
-                }
-                else
-                {
-                    logger.Information("The DB is already there");
-                }
-            }
-            catch (Exception ex)
-            {
-                logger.Information("EnsureCreated failed!");
-                logger.Information(ex.ToString());
-                return false;
-            }
-            return true;
-        }
-
     }
 }
