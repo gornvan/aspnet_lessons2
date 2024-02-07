@@ -10,5 +10,6 @@
         public required double MassPerSquareMeter { get; set; }
 
         public virtual IEnumerable<VendorProvidesFabric>? Sources { get; set; }
+        public virtual IEnumerable<ProductRequiresFabric>? DependentProducts { get; set; }
     }
 }
