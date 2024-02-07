@@ -1,5 +1,4 @@
 ﻿using FabricMarket_DAL;
-using FabricMarket_TestWebApi.Contracts.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using ILogger = Serilog.ILogger;
