@@ -8,11 +8,6 @@ namespace FabricMarket_DAL.DbEntityConfigurations.Identity
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            //builder.ToTable(nameof(UserSettings));
-
-            //builder.HasOne<UserSettings>()
-            //    .WithOne(userSettings => userSettings.User)
-            //    .HasForeignKey<User>(user => user.Id);
         }
     }
 }
