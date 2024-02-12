@@ -1,3 +1,5 @@
+using FabricMarket_BLL;
+
 namespace FabricMarket_TestWebApi
 {
     public class Program
@@ -14,6 +16,8 @@ namespace FabricMarket_TestWebApi
             builder.Services.AddSwaggerGen();
 
             TestWebApiModule.AddServices(builder);
+
+            FabricMarket_BLL_ModuleHead.RegisterModule(builder.Services);
 
             var app = builder.Build();
 
