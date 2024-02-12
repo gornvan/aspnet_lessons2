@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace FabricMarket_TestWebApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class TestController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
