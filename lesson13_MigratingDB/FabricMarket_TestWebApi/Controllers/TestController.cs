@@ -1,6 +1,7 @@
 using FabricMarket_DAL;
 using lesson11_FabricMarket_DomainModel.Models.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FabricMarket_TestWebApi.Controllers
 {
@@ -15,7 +16,7 @@ namespace FabricMarket_TestWebApi.Controllers
             _unitOfWork = uow;
         }
 
-        [HttpGet(Name = "TestGet")]
+        [HttpGet(Name = "CreateTestUser")]
         [ProducesResponseType<User>(200, contentType: "application/json")]
         public async Task<IActionResult> Get()
         {
@@ -47,5 +48,19 @@ namespace FabricMarket_TestWebApi.Controllers
 
             return Ok(user);
         }
+
+        [HttpGet("FindTestUserById", Name = "FindTestUserById")]
+        [ProducesResponseType<User>(200, contentType: "application/json")]
+        public async Task<IActionResult> FindTestUserById(long id)
+        {
+            var userRepo = _unitOfWork.GetRepository<User>();
+
+            var user = await userRepo.AsReadOnlyQueryable()
+                .Include(u => u.UserSettings) // does not fetch the settings without the include!
+                .FirstOrDefaultAsync(u => u.Id == id);
+
+            return Ok(user);
+        }
+
     }
 }
