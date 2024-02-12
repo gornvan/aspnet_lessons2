@@ -6,6 +6,8 @@ namespace FabricMarket_DAL
     {
         TEntity Create(TEntity entity);
 
+        // insert or update to be added
+
         /// <summary>
         /// The entity must be FOUND in the DB first
         /// </summary>
