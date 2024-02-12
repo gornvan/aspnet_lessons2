@@ -2,8 +2,8 @@
 {
     public class VendorProvidesFabric : IEntityWithoutOwnId
     {
-        public required long VendorId { get; set; }
-        public required long FabricVariantId { get; set; }
+        public required int VendorId { get; set; }
+        public required int FabricVariantId { get; set; }
 
         public required Vendor Vendor { get; set; }
         public required FabricVariant FabricVariant { get; set; }
