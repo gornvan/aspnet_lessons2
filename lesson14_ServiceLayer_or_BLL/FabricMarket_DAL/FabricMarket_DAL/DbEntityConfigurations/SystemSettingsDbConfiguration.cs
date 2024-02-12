@@ -4,11 +4,10 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace FabricMarket_DAL.DbEntityConfigurations
 {
-    internal class SystemSettingsDbConfiguration : IEntityTypeConfiguration<SystemSettings>
+    internal class SystemSettingsDbConfiguration : IEntityTypeConfiguration<SystemSetting>
     {
-        public void Configure(EntityTypeBuilder<SystemSettings> builder)
+        public void Configure(EntityTypeBuilder<SystemSetting> builder)
         {
-            builder.HasKey(ss => ss.SettingId);
         }
     }
 }
