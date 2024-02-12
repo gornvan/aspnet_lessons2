@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FabricMarket_DAL\FabricMarket_DAL\FabricMarket_DAL.csproj" />
+    <ProjectReference Include="..\FabricMarket_BLL\FabricMarket_BLL.csproj" />
   </ItemGroup>
 
 </Project>
