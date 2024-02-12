@@ -10,4 +10,10 @@
     <ProjectReference Include="..\FabricMarket_DAL\FabricMarket_DAL\FabricMarket_DAL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\ECommerce\" />
+    <Folder Include="Services\FabricProduction\" />
+    <Folder Include="Services\Identity\" />
+  </ItemGroup>
+
 </Project>
