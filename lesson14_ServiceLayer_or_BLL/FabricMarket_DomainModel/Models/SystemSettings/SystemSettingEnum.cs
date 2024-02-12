@@ -1,6 +1,6 @@
 ﻿namespace lesson11_FabricMarket_DomainModel.Models.SystemSettings
 {
-    public enum SystemSettingId
+    public enum SystemSettingEnum
     {
         SystemIsEnabled = 1,
         SystemIsHealthy = 2,
