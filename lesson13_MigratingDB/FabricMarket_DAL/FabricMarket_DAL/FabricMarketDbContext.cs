@@ -11,7 +11,7 @@ namespace FabricMarket_DAL
 
         // public DbSet<Feedback> Feedbacks;
         // public DbSet<Order> Orders;
-        // ...
+        // ... - use ApplyConfigurationsFromAssembly instead and create configs for entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
