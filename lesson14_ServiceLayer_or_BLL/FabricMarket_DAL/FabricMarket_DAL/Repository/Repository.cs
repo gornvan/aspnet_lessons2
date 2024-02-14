@@ -1,13 +1,15 @@
 ﻿using lesson11_FabricMarket_DomainModel.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
-namespace FabricMarket_DAL
+namespace FabricMarket_DAL.Repository
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, IEntity
     {
         private readonly DbSet<TEntity> _dbSet;
 
-        public Repository(DbContext context){
+        public Repository(DbContext context)
+        {
             _dbSet = context.Set<TEntity>();
         }
 
@@ -15,8 +17,6 @@ namespace FabricMarket_DAL
         {
             return _dbSet.Add(entity).Entity;
         }
-
-        // insert or update to be added
 
         public TEntity Delete(TEntity entity)
         {
@@ -31,6 +31,19 @@ namespace FabricMarket_DAL
         public IQueryable<TEntity> AsReadOnlyQueryable()
         {
             return _dbSet.AsQueryable().AsNoTracking();
+        }
+
+        public async Task<TEntity> InsertOrUpdate(
+            Expression<Func<TEntity, bool>> predicate,
+            TEntity entity
+        ){
+            var entityExists = await _dbSet.AnyAsync(predicate);
+            if (entityExists)
+            {
+                return _dbSet.Update(entity).Entity;
+            }
+            
+            return _dbSet.Add(entity).Entity;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using lesson11_FabricMarket_DomainModel.Models;
+using System.Linq.Expressions;
 
-namespace FabricMarket_DAL
+namespace FabricMarket_DAL.Repository
 {
     public interface IRepository<TEntity> where TEntity : class, IEntity
     {
@@ -22,5 +23,10 @@ namespace FabricMarket_DAL
         /// Query for read-only (Untracked) entities
         /// </summary>
         IQueryable<TEntity> AsReadOnlyQueryable();
+
+        Task<TEntity> InsertOrUpdate(
+            Expression<Func<TEntity, bool>> predicate,
+            TEntity entity
+        );
     }
 }
