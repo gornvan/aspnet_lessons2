@@ -40,14 +40,14 @@ namespace FabricMarket_TestWebApi.Controllers.System
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(SystemSettingEnum id, string newValue)
+        public async Task<IActionResult> Update([FromBody] SystemSetting setting)
         {
             // to be replaced with:
             // await _settingsService.WriteSetting(id, newValue);
             // after implementing an exception filter
             try
             {
-                await _settingsService.WriteSetting(id, newValue);
+                await _settingsService.WriteSetting(setting);
                 return Ok();
             }
             catch (Exception ex)
