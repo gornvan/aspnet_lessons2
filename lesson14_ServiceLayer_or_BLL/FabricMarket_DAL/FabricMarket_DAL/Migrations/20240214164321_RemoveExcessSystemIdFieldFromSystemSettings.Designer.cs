@@ -3,6 +3,7 @@ using System;
 using FabricMarket_DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FabricMarket_DAL.Migrations
 {
     [DbContext(typeof(FabricMarketDbContext))]
-    partial class FabricMarketDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240214164321_RemoveExcessSystemIdFieldFromSystemSettings")]
+    partial class RemoveExcessSystemIdFieldFromSystemSettings
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
