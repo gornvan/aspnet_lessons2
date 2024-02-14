@@ -9,6 +9,13 @@ namespace FabricMarket_DAL
 
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLazyLoadingProxies();
+
+            base.OnConfiguring(optionsBuilder);
+        }
+
         // public DbSet<Feedback> Feedbacks;
         // public DbSet<Order> Orders;
         // ... - use ApplyConfigurationsFromAssembly instead and create configs for entities
