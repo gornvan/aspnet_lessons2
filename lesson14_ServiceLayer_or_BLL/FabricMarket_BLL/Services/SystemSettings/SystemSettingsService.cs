@@ -27,7 +27,7 @@ namespace FabricMarket_BLL.Services.SystemSettings
             var repo = _unitOfWork.GetRepository<SystemSetting>();
 
             await repo.InsertOrUpdate(
-                s => s.Id == settingToWrite.Id,
+                setting => setting.Id == settingToWrite.Id,
                 settingToWrite
             );
 
