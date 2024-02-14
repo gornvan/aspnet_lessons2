@@ -8,7 +8,12 @@ namespace FabricMarket_DAL.DbEntityConfigurations.Ecommerce
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
-            
+            builder.HasIndex(product => product.Name)
+                .IncludeProperties(
+                    nameof(Product.Id),
+                    nameof(Product.Description),
+                    nameof(Product.PicturePath)
+                );
         }
     }
 }

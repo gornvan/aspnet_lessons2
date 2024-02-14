@@ -3,6 +3,7 @@ using System;
 using FabricMarket_DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FabricMarket_DAL.Migrations
 {
     [DbContext(typeof(FabricMarketDbContext))]
-    partial class FabricMarketDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240214183407_CreateProductNameIndex")]
+    partial class CreateProductNameIndex
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,7 +49,7 @@ namespace FabricMarket_DAL.Migrations
 
                     b.HasIndex("Name");
 
-                    NpgsqlIndexBuilderExtensions.IncludeProperties(b.HasIndex("Name"), new[] { "Id", "Description", "PicturePath" });
+                    NpgsqlIndexBuilderExtensions.IncludeProperties(b.HasIndex("Name"), new[] { "PicturePath" });
 
                     b.ToTable("Product");
                 });
