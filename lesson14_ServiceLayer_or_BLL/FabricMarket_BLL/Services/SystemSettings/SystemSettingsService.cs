@@ -22,28 +22,16 @@ namespace FabricMarket_BLL.Services.SystemSettings
             return settingEntity?.Value;
         }
 
-        public async Task WriteSetting(SystemSettingEnum id, string value)
+        public async Task WriteSetting(SystemSetting settingToWrite)
         {
-            var setting = new SystemSetting { SettingId = id, Value = value };
-
             var repo = _unitOfWork.GetRepository<SystemSetting>();
 
-            repo.Update(setting);
+            await repo.InsertOrUpdate(
+                s => s.Id == settingToWrite.Id,
+                settingToWrite
+            );
 
-            var updatedCount = await _unitOfWork.SaveChangesAsync();
-            if (updatedCount == 1)
-            {
-                return;
-            }
-            
-            repo.Create(setting);
-            var createdCount = await _unitOfWork.SaveChangesAsync();
-            if (createdCount != 1)
-            {
-                throw new SettingsUpdateException(
-                    $@"Expected to update 1 setting, but updated {updatedCount}"
-                );
-            }
+            await _unitOfWork.SaveChangesAsync();
         }
     }
 }

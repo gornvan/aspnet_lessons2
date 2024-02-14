@@ -6,6 +6,6 @@ namespace FabricMarket_BLL.Contracts.SystemSettings
     {
         public Task<string?> ReadSetting(SystemSettingEnum settingId);
 
-        public Task WriteSetting(SystemSettingEnum id, string value);
+        public Task WriteSetting(SystemSetting settingToWrite);
     }
 }
