@@ -1,0 +1,1 @@
+dotnet ef migrations add -p FabricMarket_DAL/FabricMarket_DAL -s FabricMarket_TestWebApi
