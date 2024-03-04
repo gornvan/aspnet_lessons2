@@ -1,4 +1,5 @@
 ﻿using FabricMarket_DAL;
+using FabricMarket_TestWebApi.ConfigurationSections;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using ILogger = Serilog.ILogger;
@@ -38,8 +39,8 @@ namespace FabricMarket_TestWebApi
 
         internal static void AddSerilog(WebApplicationBuilder builder)
         {
-            var loggingDir = builder.Configuration.GetSection("SerilogConfig")["LoggingDir"] ?? "./";
-            var logFilePath = Path.Combine(loggingDir, "log.txt");
+            var serilogConfig = builder.Configuration.GetSection(nameof(SerilogConfig)).Get<SerilogConfig>();
+            var logFilePath = Path.Combine(serilogConfig?.LoggingDir ?? "./", "log.txt");
 
             var loggerConfig = new LoggerConfiguration()
                 .WriteTo.Console()
