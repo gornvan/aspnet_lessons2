@@ -38,9 +38,12 @@ namespace FabricMarket_TestWebApi
 
         internal static void AddSerilog(WebApplicationBuilder builder)
         {
+            var loggingDir = builder.Configuration.GetSection("SerilogConfig")["LoggingDir"] ?? "./";
+            var logFilePath = Path.Combine(loggingDir, "log.txt");
+
             var loggerConfig = new LoggerConfiguration()
                 .WriteTo.Console()
-                .WriteTo.File("log.txt", rollingInterval: RollingInterval.Month,
+                .WriteTo.File(logFilePath, rollingInterval: RollingInterval.Month,
                     outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}");
 
             if (builder.Environment.IsDevelopment())
