@@ -5,7 +5,7 @@ using ILogger = Serilog.ILogger;
 
 namespace FabricMarket_TestWebApi
 {
-    public static class TestWebApiModule
+    public static class FabricMarket_TestWebApi_ModuleHead
     {
 
         internal static void AddServices(WebApplicationBuilder builder)
