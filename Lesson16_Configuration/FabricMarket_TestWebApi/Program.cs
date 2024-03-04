@@ -15,7 +15,7 @@ namespace FabricMarket_TestWebApi
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            TestWebApiModule.AddServices(builder);
+            FabricMarket_TestWebApi_ModuleHead.AddServices(builder);
 
             FabricMarket_BLL_ModuleHead.RegisterModule(builder.Services);
 
