@@ -11,16 +11,19 @@ namespace FabricMarket_TestWebApi
         internal static void AddServices(WebApplicationBuilder builder)
         {
             AddSerilog(builder);
-            RegisterDAL(builder.Services);
+            RegisterDAL(builder);
         }
 
 
-        public static void RegisterDAL(IServiceCollection services)
+        public static void RegisterDAL(WebApplicationBuilder builder)
         {
+            var services = builder.Services;
+
+            var connectionString = builder.Configuration.GetConnectionString("Default");
             services.AddTransient<DbContextOptions<FabricMarketDbContext>>(provider =>
             {
                 var builder = new DbContextOptionsBuilder<FabricMarketDbContext>();
-                builder.UseNpgsql("host=localhost;port=5432;database=FabricMarket;Username=postgres;Password=123123");
+                builder.UseNpgsql(connectionString);
                 return builder.Options;
             });
 
