@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using lesson11_FabricMarket_DomainModel.Models.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace FabricMarket_DAL
 {
-    public class FabricMarketDbContext : DbContext
+    public class FabricMarketDbContext : IdentityDbContext<User>
     {
         public FabricMarketDbContext(DbContextOptions<FabricMarketDbContext> options) : base(options)
         {
@@ -15,6 +17,7 @@ namespace FabricMarket_DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
         }
     }
