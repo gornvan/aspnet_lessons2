@@ -13,7 +13,6 @@
   <ItemGroup>
     <Folder Include="Services\ECommerce\" />
     <Folder Include="Services\FabricProduction\" />
-    <Folder Include="Services\Identity\" />
   </ItemGroup>
 
 </Project>
