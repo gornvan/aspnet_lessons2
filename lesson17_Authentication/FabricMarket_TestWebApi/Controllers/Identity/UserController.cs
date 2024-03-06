@@ -1,5 +1,4 @@
 ﻿using FabricMarket_BLL.Contracts.Identity;
-using FabricMarket_DAL;
 using FabricMarket_TestWebApi.DataTransferObjects.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,26 +8,27 @@ namespace FabricMarket_TestWebApi.Controllers.Identity
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
-        private IUserService _userService;
+        private readonly IUserService _userService;
         public UserController(IUserService userService)
         {
             _userService = userService;
         }
 
         [HttpPost]
-        public async IActionResult CreateUser([FromBody]UserBriefDTO user)
+        public async Task<IActionResult> CreateUser([FromBody]UserBriefDTO user)
         {
-            var newUserModel = new UserBriefModel
+            var newUserModel = new UserCreateModel
             {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
                 Role = user.Role,
+                Password = user.Password
             };
 
-            var newUserId = _userService.CreateUser(newUserModel);
+            var newUserId = await _userService.CreateUser(newUserModel);
 
-            return Ok();
+            return Ok(newUserId);
         }
 
 

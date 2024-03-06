@@ -38,7 +38,6 @@ namespace FabricMarket_TestWebApi.Controllers
                 LastName = "Test",
                 Role = UserRoleEnum.Administrator,
                 PasswordHash = "",
-                PasswordSalt = "",
                 UserSettings = linkedSettings,
             };
 
@@ -51,7 +50,7 @@ namespace FabricMarket_TestWebApi.Controllers
 
         [HttpGet("FindTestUserById", Name = "FindTestUserById")]
         [ProducesResponseType<User>(200, contentType: "application/json")]
-        public async Task<IActionResult> FindTestUserById(long id)
+        public async Task<IActionResult> FindTestUserById(string id)
         {
             var userRepo = _unitOfWork.GetRepository<User>();
 

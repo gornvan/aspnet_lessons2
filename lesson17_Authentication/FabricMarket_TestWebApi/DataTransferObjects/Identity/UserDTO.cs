@@ -15,5 +15,9 @@ namespace FabricMarket_TestWebApi.DataTransferObjects.Identity
         public required string Email { get; set; }
         
         public required UserRoleEnum Role { get; set; }
+
+        [MinLength(10)]
+        [MaxLength(50)]
+        public required string Password { get; set; }
     }
 }
