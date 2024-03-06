@@ -10,7 +10,7 @@ namespace FabricMarket_DAL.DbEntityConfigurations.Identity
         {
             builder.HasOne<User>()
                 .WithOne(user => user.UserSettings)
-                .HasForeignKey<User>(user => user.Id);
+                .HasForeignKey<UserSettings>(us => us.UserId);
         }
     }
 }
