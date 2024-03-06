@@ -1,5 +1,6 @@
 ﻿using FabricMarket_DAL;
 using FabricMarket_TestWebApi.ConfigurationSections;
+using lesson11_FabricMarket_DomainModel.Models.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using ILogger = Serilog.ILogger;
@@ -12,9 +13,16 @@ namespace FabricMarket_TestWebApi
         internal static void AddServices(WebApplicationBuilder builder)
         {
             AddSerilog(builder);
+            
             RegisterDAL(builder);
+
+            RegisterIdentity(builder);
         }
 
+        private static void RegisterIdentity(WebApplicationBuilder builder) {
+            builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+                    .AddEntityFrameworkStores<DbContext>();
+        }
 
         public static void RegisterDAL(WebApplicationBuilder builder)
         {
