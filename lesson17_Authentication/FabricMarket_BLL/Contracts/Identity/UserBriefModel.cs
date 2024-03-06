@@ -8,5 +8,6 @@ namespace FabricMarket_BLL.Contracts.Identity
         public string? LastName { get; set; }
         public required string Email { get; set; }
         public required UserRoleEnum Role { get; set; }
+
     }
 }

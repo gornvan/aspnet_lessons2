@@ -2,11 +2,11 @@
 
 namespace FabricMarket_BLL.Contracts.Identity
 {
-    public interface IUserService
+    public interface IUserService : IService
     {
         Task<List<UserBriefModel>> FetchUsers(long skip = 0, long take = 20, string? searchString = null, UserRoleEnum? role = null);
 
-        Task<User> CreateUser(UserBriefModel user);
+        Task<User> CreateUser(UserCreateModel user);
 
         Task<User> DeleteUser(long userId);
 
