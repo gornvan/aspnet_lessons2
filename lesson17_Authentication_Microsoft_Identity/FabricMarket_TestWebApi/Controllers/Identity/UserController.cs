@@ -38,6 +38,7 @@ namespace FabricMarket_TestWebApi.Controllers.Identity
 
 
         [HttpGet]
+        [RoleBasedAuthorizationFilter(Role = UserRoleEnum.Administrator)]
         public async Task<IActionResult> SearchForUsers(
             [FromQuery] string? searchString = default,
             [FromQuery] UserRoleEnum? role = null,
