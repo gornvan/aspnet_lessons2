@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "lesson11_FabricMarket_Domai
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FabricMarket_TestWebApi", "FabricMarket_TestWebApi\FabricMarket_TestWebApi.csproj", "{494FF144-3D51-4430-8451-2372B908F208}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FabricMarket_BLL", "FabricMarket_BLL\FabricMarket_BLL.csproj", "{1C90F548-FA11-4837-94BF-FAC1FCB09A36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FabricMarket_BLL", "FabricMarket_BLL\FabricMarket_BLL.csproj", "{1C90F548-FA11-4837-94BF-FAC1FCB09A36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1_Auth", "WebApplication1_Auth\WebApplication1_Auth.csproj", "{8F0885FC-6A84-4F94-9D43-C68E585B5937}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{1C90F548-FA11-4837-94BF-FAC1FCB09A36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C90F548-FA11-4837-94BF-FAC1FCB09A36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C90F548-FA11-4837-94BF-FAC1FCB09A36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F0885FC-6A84-4F94-9D43-C68E585B5937}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F0885FC-6A84-4F94-9D43-C68E585B5937}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F0885FC-6A84-4F94-9D43-C68E585B5937}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F0885FC-6A84-4F94-9D43-C68E585B5937}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
