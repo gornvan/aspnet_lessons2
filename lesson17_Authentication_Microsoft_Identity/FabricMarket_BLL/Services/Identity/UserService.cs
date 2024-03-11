@@ -76,8 +76,8 @@ namespace FabricMarket_BLL.Services.Identity
                 code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                 var callbackUrl = $@"https://localhost:7183/confirm?userId={userId}&code={code}";
 
-                await _emailSender.SendEmailAsync(newUser.Email, "Confirm your email",
-                    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                var emailMessage = $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.";
+                await _emailSender.SendEmailAsync(newUser.Email, "Confirm your email", emailMessage);
                 
                 return newUser;
             }
@@ -87,7 +87,6 @@ namespace FabricMarket_BLL.Services.Identity
 
         public Task<List<UserBriefModel>> FetchUsers(long skip = 0, long take = 20, string? searchString = null, UserRoleEnum? role = null)
         {
-            throw new NotImplementedException();
             var repo = _unitOfWork.GetRepository<User>();
 
             var query = repo.AsReadOnlyQueryable();
@@ -127,18 +126,18 @@ namespace FabricMarket_BLL.Services.Identity
             return projectedQuery.Skip((int)skip).Take((int)take).ToListAsync();
         }
 
-        public Task<User> DeleteUser(long userId)
+        public Task<User> DeleteUser(string userId)
         {
             throw new NotImplementedException();
         }
 
 
-        public Task<User> SetUserRole(long userId, UserRoleEnum newRole)
+        public Task<User> SetUserRole(string userId, UserRoleEnum newRole)
         {
             throw new NotImplementedException();
         }
 
-        public Task<User> UpdatePassword(long userId, string newPassword)
+        public Task<User> UpdatePassword(string userId, string newPassword)
         {
             throw new NotImplementedException();
         }
@@ -146,6 +145,15 @@ namespace FabricMarket_BLL.Services.Identity
         public Task<User> UpdateUserContactData(User user)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<UserRoleEnum?> GetUserRole(string userId)
+        {
+            var repo = _unitOfWork.GetRepository<User>();
+
+            var user = await repo.AsReadOnlyQueryable().FirstOrDefaultAsync(u => u.Id == userId);
+
+            return user?.Role;
         }
     }
 }

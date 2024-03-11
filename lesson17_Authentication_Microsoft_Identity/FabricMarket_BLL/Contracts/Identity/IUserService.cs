@@ -8,12 +8,14 @@ namespace FabricMarket_BLL.Contracts.Identity
 
         Task<User> CreateUser(UserCreateModel user);
 
-        Task<User> DeleteUser(long userId);
+        Task<User> DeleteUser(string userId);
 
         Task<User> UpdateUserContactData(User user);
 
-        Task<User> SetUserRole(long userId, UserRoleEnum newRole);
+        Task<User> SetUserRole(string userId, UserRoleEnum newRole);
 
-        Task<User> UpdatePassword(long userId, string newPassword);
+        Task<UserRoleEnum?> GetUserRole(string userId);
+
+        Task<User> UpdatePassword(string userId, string newPassword);
     }
 }
