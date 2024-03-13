@@ -25,6 +25,8 @@ namespace FabricMarket_TestWebApi.Controllers.System
 
         [HttpGet]
         public async Task<IActionResult> Get(SystemSettingEnum id) {
+            throw new NotImplementedException();
+
             try
             {
                 var settingValue = await _settingsService.ReadSetting(id);
