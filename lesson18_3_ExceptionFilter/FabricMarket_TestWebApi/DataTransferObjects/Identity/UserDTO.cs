@@ -1,4 +1,6 @@
-﻿using lesson11_FabricMarket_DomainModel.Models.Identity;
+﻿using lesson11_FabricMarket_DomainModel.Models.FabricProduction;
+using lesson11_FabricMarket_DomainModel.Models.Identity;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
 namespace FabricMarket_TestWebApi.DataTransferObjects.Identity

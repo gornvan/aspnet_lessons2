@@ -18,7 +18,7 @@ namespace FabricMarket_TestWebApi.Controllers.Identity
             _userService = userService;
         }
 
-        [HttpPost]
+        [HttpPost("NEW_USER")]
         //[Authorize] // Micorosft Identity's attribute - uses Claims and dynamic Roles, too complicated for our usecase
         public async Task<IActionResult> CreateUser([FromBody]UserBriefDTO user)
         {

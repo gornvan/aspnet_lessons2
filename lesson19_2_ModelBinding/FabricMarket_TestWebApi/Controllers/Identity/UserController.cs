@@ -43,10 +43,10 @@ namespace FabricMarket_TestWebApi.Controllers.Identity
             [FromQuery] UserSearchDTO searchParams)
         {
             var users = await _userService.FetchUsers(
-                searchParams.skip,
-                searchParams.take, 
-                searchParams.searchString,
-                searchParams.role);
+                searchParams.Skip,
+                searchParams.Take, 
+                searchParams.SearchString,
+                searchParams.Role);
 
             if(users.Count == 0)
             {
