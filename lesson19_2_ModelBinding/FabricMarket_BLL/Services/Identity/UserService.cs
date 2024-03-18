@@ -98,12 +98,11 @@ namespace FabricMarket_BLL.Services.Identity
 
                 query = from user in query
                         where searchStrings.All(str =>
-                            user.FirstName.Contains(str, StringComparison.CurrentCultureIgnoreCase)
+                            user.FirstName.Contains(str)
                             ||
-                            user.LastName.Contains(str, StringComparison.CurrentCultureIgnoreCase)
+                            user.LastName.Contains(str)
                             ||
-                            user.Email.Contains(str, StringComparison.CurrentCultureIgnoreCase)
-                        )
+                            user.Email.Contains(str)
                         select user;
             }
 
