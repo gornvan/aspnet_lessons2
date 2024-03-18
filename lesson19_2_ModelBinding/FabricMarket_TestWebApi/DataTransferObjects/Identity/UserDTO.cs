@@ -18,7 +18,7 @@ namespace FabricMarket_TestWebApi.DataTransferObjects.Identity
         
         public required UserRoleEnum Role { get; set; }
 
-        [MinLength(10)]
+        [MinLength(10, ErrorMessage = "The password is too short!")]
         [MaxLength(50)]
         public required string Password { get; set; }
     }
