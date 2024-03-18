@@ -40,14 +40,13 @@ namespace FabricMarket_TestWebApi.Controllers.Identity
         [HttpGet]
         [RoleBasedAuthorizationFilter(Role = UserRoleEnum.Administrator)]
         public async Task<IActionResult> SearchForUsers(
-            [FromQuery] string? searchString = default,
-            [FromQuery] UserRoleEnum? role = null,
-            [FromQuery] int skip = 0,
-            [FromQuery] int take = 10)
+            [FromQuery] UserSearchDTO searchParams)
         {
-            var currentUser = this.HttpContext.User;
-
-            var users = await _userService.FetchUsers(skip, take, searchString, role);
+            var users = await _userService.FetchUsers(
+                searchParams.skip,
+                searchParams.take, 
+                searchParams.searchString,
+                searchParams.role);
 
             if(users.Count == 0)
             {
