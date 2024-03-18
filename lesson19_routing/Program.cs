@@ -26,6 +26,9 @@ namespace lesson19_routing
 
 			app.UseAuthorization();
 
+			app.MapControllerRoute(
+				name: "default",
+				pattern: "{controller=Home}/{action=Index}/{id?}");
 
 			app.Run();
 		}
