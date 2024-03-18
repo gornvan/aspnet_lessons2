@@ -103,6 +103,7 @@ namespace FabricMarket_BLL.Services.Identity
                             user.LastName.Contains(str)
                             ||
                             user.Email.Contains(str)
+                        )
                         select user;
             }
 
