@@ -58,7 +58,15 @@ namespace FabricMarket_TestWebApi
 
 			app.MapControllers();
 
-            app.Run();
+            // useful when building an MVC application, not API:
+			//app.UseEndpoints(endpoints =>
+			//{
+			//	endpoints.MapControllerRoute(
+			//	name: "default",
+			//	pattern: "/api/{controller}/{action}/{id?}");
+			//});
+
+			app.Run();
         }
     }
 }
