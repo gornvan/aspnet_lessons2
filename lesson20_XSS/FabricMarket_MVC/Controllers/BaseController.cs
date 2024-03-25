@@ -1,10 +1,12 @@
-﻿using FabricMarket_BLL.Contracts.Identity;
+﻿using FabricMarket_MVC.Filters;
 using FabricMarket_MVC.Startup.Configuration;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
 namespace FabricMarket_MVC.Controllers
 {
+
+    [CurrentUserFromCookieFilter]
     public class BaseController : Controller
     {
         protected readonly IConfiguration _config;
@@ -19,7 +21,6 @@ namespace FabricMarket_MVC.Controllers
                 ConfigurationFieldNames.ApiBaseUrl,
                 string.Empty);
 #pragma warning restore CS8601 // Possible null reference assignment.
-            //ViewBag.ApiBaseUrl = ApiBaseUrl; // possibly will be needed for some interactive views
         }
 
         protected HttpClient CreateApiClient()
@@ -48,6 +49,15 @@ namespace FabricMarket_MVC.Controllers
                     PropertyNameCaseInsensitive = true
                 }
             );
+        }
+
+        protected string? GetCurrentUserDeclaredByBrowser()
+        {
+            if (HttpContext.Items.TryGetValue(CurrentUserFromCookieFilterAttribute.UserNameContextItemKey, out var currentUser))
+            {
+                return currentUser.ToString();
+            }
+            return null;
         }
     }
 }

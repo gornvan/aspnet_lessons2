@@ -36,6 +36,9 @@ namespace FabricMarket_TestWebApi.Controllers.Identity
             if (result.Succeeded)
             {
                 _logger.Information($@"User {loginData.Email} has logged in.");
+
+                // todo get the user's role and put it into Claims, so it will be easier for filters to check access
+
                 return Ok();
             }
 

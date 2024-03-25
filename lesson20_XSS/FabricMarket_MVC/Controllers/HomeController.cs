@@ -15,6 +15,8 @@ namespace FabricMarket_MVC.Controllers
 
 		public IActionResult Index()
 		{
+			ViewBag.CurrentUserName = GetCurrentUserDeclaredByBrowser();
+
 			return View();
 		}
 

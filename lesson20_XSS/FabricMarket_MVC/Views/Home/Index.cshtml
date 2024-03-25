@@ -1,6 +1,8 @@
 ﻿@using FabricMarket_MVC.Controllers
 @{
     ViewData["Title"] = "Home Page";
+
+    var CurrentUserName = ViewBag.CurrentUserName;
 }
 
 <div class="text-center">
@@ -8,6 +10,11 @@
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
-<a href="@Url.Action(nameof(LoginController.Index), "Login", new { ReturnPath = "/User/ListView" })">Login and then List Users!</a>
-<br />
+@if(CurrentUserName == null){
+    <a href="@Url.Action(nameof(LoginController.Index), "Login", new { ReturnPath = "/User/ListView" })">
+        Login and then List Users!
+    </a>
+    <br />
+}
+
 <a href="@Url.Action(nameof(UserController.ListView), "User")">User List</a>

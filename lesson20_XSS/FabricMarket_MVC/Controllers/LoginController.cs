@@ -1,6 +1,6 @@
-﻿using FabricMarket_MVC.Models;
+﻿using FabricMarket_MVC.Filters;
+using FabricMarket_MVC.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Text;
 using System.Text.Json;
 
 namespace FabricMarket_MVC.Controllers
@@ -46,6 +46,13 @@ namespace FabricMarket_MVC.Controllers
                         HttpOnly = true // Ensure cookies are only accessible via HTTP
                     });
                 }
+
+                // Also set the Email as a Cookie:
+                Response.Cookies.Append(CurrentUserFromCookieFilterAttribute.UserNameCookieKey, model.Email, new CookieOptions
+                {
+                    Expires = DateTimeOffset.Now.AddDays(1), // Set expiration as needed
+                    HttpOnly = true // Ensure cookies are only accessible via HTTP
+                });
 
                 var returnUrl = Url.Action(nameof(HomeController.Index), "Home");
                 if (Url.IsLocalUrl(model.ReturnPath))
