@@ -1,10 +1,14 @@
+using FabricMarket_MVC.Startup.ConfigurationChecker;
+
 namespace FabricMarket_MVC
 {
-	public class Program
+    public class Program
 	{
 		public static void Main(string[] args)
 		{
 			var builder = WebApplication.CreateBuilder(args);
+
+			ConfigurationChecker.ThrowIfConfigurationIsIncorrect(builder.Configuration);
 
 			// Add services to the container.
 			builder.Services.AddControllersWithViews();
@@ -29,6 +33,8 @@ namespace FabricMarket_MVC
 			app.MapControllerRoute(
 				name: "default",
 				pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
 
 			app.Run();
 		}
