@@ -289,7 +289,7 @@ return Home.cshtml<y:LabelModel>
           <y:Geometry height="37.03167065073046" width="270.537529880478" x="941.4948105264277" y="313.85485455128776"/>
           <y:Fill color="#FF6600" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="244.146484375" x="13.195522752738952" y="1.8146634503652308">via javascript:
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="244.146484375" x="13.195522752738952" y="1.8146634503652308">via javascript / or rendering:
 check user authentication - show login button<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -390,7 +390,7 @@ click Submit<y:LabelModel>
           <y:Geometry height="45.56999588012695" width="972.5356706507304" x="869.8695328910894" y="-28.696339176149532"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="426.8828125" x="272.82642907536524" y="6.083826065063477">MVC frontend + Request going from Browser
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="426.8828125" x="272.82642907536524" y="6.083826065063477">MVC frontend + Request going from Browser to Frontend Server
 The session Token is not managed by client but only stored in Browser Cookies<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -601,7 +601,7 @@ check user Browser Storage - show login button<y:LabelModel>
     <node id="n33">
       <data key="d6">
         <y:GenericNode configuration="BevelNode3">
-          <y:Geometry height="37.03167065073046" width="217.79999999999995" x="2549.359402587211" y="395.59532103394423"/>
+          <y:Geometry height="37.03167065073046" width="217.79999999999995" x="2265.596355575259" y="441.38435816541835"/>
           <y:Fill color="#FF6600" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="131.078125" x="43.36093750000009" y="1.8146634503652308">Input login + password, 
@@ -634,7 +634,7 @@ click Submit<y:LabelModel>
     <node id="n35">
       <data key="d6">
         <y:GenericNode configuration="BevelNode3">
-          <y:Geometry height="37.03167065073046" width="217.79999999999995" x="2549.359402587211" y="440.74045782013286"/>
+          <y:Geometry height="37.03167065073046" width="217.79999999999995" x="2265.596355575259" y="486.529494951607"/>
           <y:Fill color="#FF6600" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="119.388671875" x="49.20566406250009" y="1.8146634503652308">If Token returned
@@ -669,7 +669,7 @@ Token in cookies
     <node id="n37">
       <data key="d6">
         <y:GenericNode configuration="BevelNode2">
-          <y:Geometry height="70.5673306772909" width="264.389535192563" x="1230.027700221767" y="764.6533563092205"/>
+          <y:Geometry height="70.5673306772909" width="264.389535192563" x="1223.9426006201734" y="777.8732814002037"/>
           <y:Fill color="#FF9900" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="224.6875" x="19.85101759628151" y="18.582493463645505">Users.cshtml
@@ -686,7 +686,7 @@ WITH USERS RENDERED ONTO PAGE<y:LabelModel>
     <node id="n38">
       <data key="d6">
         <y:GenericNode configuration="BevelNode3">
-          <y:Geometry height="37.03167065073046" width="217.79999999999995" x="1247.2373682164548" y="727.6216856584902"/>
+          <y:Geometry height="37.03167065073046" width="217.79999999999995" x="1247.2373682164548" y="703.8099400987428"/>
           <y:Fill color="#FF6600" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="199.427734375" x="9.186132812500091" y="1.8146634503652876">Send request for Users,
@@ -1251,6 +1251,23 @@ from the backend server<y:LabelModel>
         </y:GenericNode>
       </data>
     </node>
+    <node id="n71">
+      <data key="d6">
+        <y:GenericNode configuration="BevelNode3">
+          <y:Geometry height="37.03167065073046" width="217.79999999999995" x="1247.2373682164548" y="740.8416107494733"/>
+          <y:Fill color="#FF6600" transparent="false"/>
+          <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="144.7421875" x="36.52890625000009" y="1.814663450365174">Accept data from Backend
+Embed the data into View<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+        </y:GenericNode>
+      </data>
+    </node>
     <edge id="e0" source="n4" target="n0">
       <data key="d10">
         <y:PolyLineEdge>
@@ -1457,7 +1474,7 @@ from the backend server<y:LabelModel>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="61.708984375" x="29.20266971652927" y="-19.052641974507935">login+pass<y:LabelModel>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="61.708984375" x="154.67476652734467" y="-33.71144125225419">login+pass<y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1473,7 +1490,7 @@ from the backend server<y:LabelModel>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="2811.2122706846917" y="459.2562931454981"/>
+            <y:Point x="2811.2122706846917" y="505.0453302769722"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
@@ -1505,6 +1522,7 @@ from the backend server<y:LabelModel>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="2215.841439850704" y="505.0453302769722"/>
             <y:Point x="2215.841439850704" y="459.2562931454981"/>
             <y:Point x="2215.841439850704" y="207.1036974600633"/>
           </y:Path>
@@ -1728,6 +1746,16 @@ from the backend server<y:LabelModel>
       </data>
     </edge>
     <edge id="e40" source="n70" target="n17">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e41" source="n32" target="n33">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
