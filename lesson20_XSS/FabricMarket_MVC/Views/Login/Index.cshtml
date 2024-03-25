@@ -1,0 +1,24 @@
+﻿@model FabricMarket_MVC.Models.LoginViewModel
+
+<div class="container">
+    <h2>Login</h2>
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <p class="error">@ViewBag.ErrorMessage</p>
+    }
+    <form method="post">
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <input type="text" id="Email" name="Email" value="@Model.Email" />
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "error" })
+        </div>
+        <div class="form-group">
+            <label for="Password">Password</label>
+            <input type="password" id="Password" name="Password" />
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "error" })
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn">Login</button>
+        </div>
+    </form>
+</div>

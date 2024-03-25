@@ -1,0 +1,42 @@
+﻿@using FabricMarket_BLL.Contracts.Identity
+@model List<UserBriefModel>?
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User List</title>
+</head>
+<body>
+    <div class="container">
+        <h1>User List</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model ?? new List<UserBriefModel>())
+                {
+                    <tr>
+                        <td>@user.Email</td>
+                        <td>@user.FirstName</td>
+                        <td>@user.LastName</td>
+                        <td>@user.Role</td>
+                        <td>
+                            <a href="#">Edit</a> |
+                            <a href="#">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
