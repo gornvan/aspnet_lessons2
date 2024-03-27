@@ -6,3 +6,4 @@
 using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("Usage", "ASP0014:Suggest using top level route registrations", Justification = "Not a 'minimal API' app", Scope = "member", Target = "~M:FabricMarket_TestWebApi.Program.Main(System.String[])")]
+[assembly: SuppressMessage("Minor Code Smell", "S3400:Methods should not return constants", Justification = "Maintenance Methods can!", Scope = "member", Target = "~M:FabricMarket_TestWebApi.Controllers.Maintenance.PingController.Index~System.String")]
