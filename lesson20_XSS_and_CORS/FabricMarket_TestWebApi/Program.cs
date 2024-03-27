@@ -42,29 +42,7 @@ namespace FabricMarket_TestWebApi
 			// https://learn.microsoft.com/en-us/aspnet/core/fundamentals/error-handling?view=aspnetcore-8.0#iexceptionhandler
 			app.UseExceptionHandler("/Error");
 
-            //app.Map("/Error", async context =>
-            //{
-			//	await context.Response.WriteAsync("The server has faced an unexpected problem, please try again or contact the administrator");
-			//	context.Response.StatusCode = 500;
-			//});
-
-			//app.UseExceptionHandler(new ExceptionHandlerOptions
-			//{
-			//    ExceptionHandler = context => {
-			//        context.Response.StatusCode = 500;
-			//        return Task.CompletedTask;
-			//    }
-			//});
-
 			app.MapControllers();
-
-            // useful when building an MVC application, not API:
-			//app.UseEndpoints(endpoints =>
-			//{
-			//	endpoints.MapControllerRoute(
-			//	name: "default",
-			//	pattern: "/api/{controller}/{action}/{id?}");
-			//});
 
 			app.Run();
         }
