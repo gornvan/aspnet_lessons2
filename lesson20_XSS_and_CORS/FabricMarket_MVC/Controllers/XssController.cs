@@ -4,8 +4,6 @@ namespace FabricMarket_MVC.Controllers
 {
     public class XssController : BaseController
 	{
-		private readonly ILogger<HomeController> _logger;
-
         public XssController(IConfiguration config) : base(config)
         {
         }
