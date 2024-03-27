@@ -23,6 +23,8 @@ namespace FabricMarket_TestWebApi
 
             FabricMarket_BLL_ModuleHead.RegisterModule(builder.Services);
 
+            CorsConfigurer.Configure(builder);
+
             var app = builder.Build();
 
             DBInitializer.InitializeDB(app.Services);
@@ -44,7 +46,17 @@ namespace FabricMarket_TestWebApi
 
 			app.MapControllers();
 
-			app.Run();
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseCors(CorsConfigurer.RelaxedCorsPolicyName);
+            }
+            else
+            {
+                // todo add another policy when ready for production
+                app.UseCors(CorsConfigurer.RelaxedCorsPolicyName);
+            }
+
+            app.Run();
         }
     }
 }
