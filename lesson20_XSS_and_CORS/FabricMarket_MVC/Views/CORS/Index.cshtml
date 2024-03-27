@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<div id="result">
+    pinging...
+</div>
+
+
+<script>
+
+    const checkBackend = async () => {
+        const response = await fetch("@(ViewBag.ApiBaseUrl)/api/Ping")
+        const result = await response.json();
+
+        const resultElement = document.getElementById("result");
+        resultElement.innerText = result
+    }
+
+    console.log("pinging...");
+    try {
+        checkBackend();
+    }
+    catch (e){ }
+</script>
+
+<script>
+
+    const ShutApiServerDown = async () => {
+        await fetch("@(ViewBag.ApiBaseUrl)/api/Shutdown", {
+            method: "POST",
+            headers: { // if case there is a custom header in the request, POST only gets sent after successful OPTIONS
+                "custom-header": "must fail",
+                "custom-header2": "must fail",
+                "custom-header3": "must fail"
+            },
+            body: { "dumb": "data" }
+        });
+    }
+
+    console.log("shutting down...");
+    try {
+        ShutApiServerDown();
+    }
+    catch (e){ }
+</script>
