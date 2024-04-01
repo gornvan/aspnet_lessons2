@@ -1,4 +1,5 @@
 using FabricMarket_DAL;
+using FabricMarket_TestWebApi.RequestFilters;
 using lesson11_FabricMarket_DomainModel.Models.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace FabricMarket_TestWebApi.Controllers
 {
     [ApiController]
+    [LogRequestAndResponseLengh]
     [Route("api/[controller]")]
     public class TestController : ControllerBase
     {

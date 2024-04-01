@@ -13,7 +13,7 @@ namespace FabricMarket_TestWebApi
 
             builder.Services.AddControllers(options =>
             {
-                options.Filters.Add<LogRequestAndResponseLenghActionFilter>();
+                options.Filters.Add<LogRequestAndResponseLenghAttribute>();
             });
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

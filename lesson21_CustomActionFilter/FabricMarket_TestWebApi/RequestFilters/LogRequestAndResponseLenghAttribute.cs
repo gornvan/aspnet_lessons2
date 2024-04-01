@@ -2,16 +2,16 @@
 
 namespace FabricMarket_TestWebApi.RequestFilters
 {
-    public class LogRequestAndResponseLenghActionFilter : IActionFilter
+    public class LogRequestAndResponseLenghAttribute : ActionFilterAttribute
     {
-        public void OnActionExecuting(ActionExecutingContext context)
+        public override void OnActionExecuting(ActionExecutingContext context)
         {
             var msg = $"Request Length: {context.HttpContext.Request.ContentLength}";
 
             Console.WriteLine(msg);
         }
 
-        public void OnActionExecuted(ActionExecutedContext context)
+        public override void OnActionExecuted(ActionExecutedContext context)
         {
             // actually need to use ResultFilter to handle differend types of results and possibly many switches of those types.
             var msg = $"Response Length: {context.HttpContext.Response.ContentLength}";
