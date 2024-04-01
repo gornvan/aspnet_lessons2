@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FabricMarket_BLL\FabricMarket_BLL.csproj" />
+    <ProjectReference Include="..\..\lesson20_XSS_and_CORS\FabricMarket_BLL\FabricMarket_BLL.csproj" />
   </ItemGroup>
 
 </Project>
