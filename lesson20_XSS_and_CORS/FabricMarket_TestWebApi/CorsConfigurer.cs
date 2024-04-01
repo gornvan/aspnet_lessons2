@@ -32,7 +32,7 @@ namespace FabricMarket_TestWebApi
             // relaxed policy
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowAll", policy =>
+                options.AddPolicy(RelaxedCorsPolicyName, policy =>
                 {
                     policy.AllowAnyHeader();
                     policy.AllowAnyMethod();
