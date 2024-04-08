@@ -11,7 +11,10 @@ namespace FabricMarket_TestWebApi
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers()
+                // do not change field names Case!
+                .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
