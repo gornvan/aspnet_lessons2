@@ -44,7 +44,7 @@ namespace FabricMarket_TestWebApi.Controllers.Identity
         {
             var users = await _userService.FetchUsers(
                 searchParams.Skip,
-                searchParams.Take, 
+                searchParams.Take,
                 searchParams.SearchString,
                 searchParams.Role);
 
