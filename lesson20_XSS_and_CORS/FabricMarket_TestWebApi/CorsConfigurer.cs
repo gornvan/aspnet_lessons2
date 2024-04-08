@@ -19,13 +19,14 @@ namespace FabricMarket_TestWebApi
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy(StrictCorsPolicyName,
-                                      policy =>
-                                      {
-                                          policy
+                                    policy =>
+                                    {
+                                        policy
                                             .WithOrigins(corsConfig.AllowedOrigins.ToArray())
                                             .WithHeaders(corsConfig.AllowedHeaders.ToArray())
-                                            .WithMethods(corsConfig.AllowedMethods.ToArray());
-                                      });
+                                            .WithMethods(corsConfig.AllowedMethods.ToArray())
+                                            .AllowCredentials();
+                                    });
             });
 
 
@@ -36,7 +37,11 @@ namespace FabricMarket_TestWebApi
                 {
                     policy.AllowAnyHeader();
                     policy.AllowAnyMethod();
-                    policy.AllowAnyOrigin();
+
+                    // policy.AllowAnyOrigin(); // does not allow to have AllowCredentials()
+                    policy.SetIsOriginAllowed(hostName => true);
+
+                    policy.AllowCredentials();
                 });
             });
         }
