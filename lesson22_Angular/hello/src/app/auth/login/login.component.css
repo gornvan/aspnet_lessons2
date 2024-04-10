@@ -1,0 +1,13 @@
+.login-container {
+    max-width: 50ch; /* Limit width to 50 characters */
+    max-height: 50ch; /* Limit height to 50 characters */
+
+    margin: 2ch auto; /* Center the container horizontally */
+    display: flex; /* Use flexbox for centering vertically */
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+}
+
+mat-form-field {
+    width: 100%;
+}
