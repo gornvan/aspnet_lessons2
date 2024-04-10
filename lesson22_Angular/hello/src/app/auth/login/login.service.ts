@@ -16,7 +16,7 @@ export class LoginService implements ILoginService {
         const url = `${this.baseUrl}/api/Login`;
 
         return new Promise<void>((resolve, reject) => {
-            this.http.post(url, { Email, Password })
+            this.http.post(url, { Email, Password }, { withCredentials: true })
             .subscribe({
                 complete: ()=>{
                     resolve()
