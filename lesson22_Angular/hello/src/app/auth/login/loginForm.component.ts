@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private snackBar: MatSnackBar,
-    private loginService: ILoginService
+    private loginService: ILoginService,
   ) {
     this.loginForm = this.formBuilder.group({
         email: ['', [Validators.required, Validators.email]],
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     const { email, password } = this.loginForm.value;
     this.loginService.LogIn(email, password)
       .then(() => {
-        this.router.navigate(['/users/list']);
+        this.router.navigate(['/users']);
       })
       .catch(error => {
         console.log(error);
