@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { BoldDirective } from '../styling-directives/bold.style-directive';
-import { RouterOutlet } from '@angular/router';
+
+import { AppRoutingModule } from './routing/app-routing.module';
 
 import { UserListComponent } from './users/user-list/user-list.component';
 import { IUserService } from './users/user-list/user-list-service.interface';
@@ -30,11 +31,12 @@ import { MatButtonModule } from '@angular/material/button';
  */
 @NgModule({
   imports: [
+    AppRoutingModule,
+
     BrowserModule,
     FormsModule,
     HttpClientModule,
     CommonModule,
-    RouterOutlet,
     BoldDirective,
 
     // material:
