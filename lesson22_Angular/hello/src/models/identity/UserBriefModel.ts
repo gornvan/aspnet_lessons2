@@ -6,7 +6,7 @@ export class UserBriefModel{
     }
 
     constructor(
-        public Id: string,
+        public Email: string,
         public FirstName: string,
         public LastName: string,
         public Role: UserRoleEnum,
