@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       })
       .catch(error => {
         console.log(error);
-        this.error = 'Invalid email or password.';
+        this.error = '<script>alert("DANGER")</script>Invalid email or password.';
         this.loading = false;
         this.snackBar.open(this.error, 'Close', {
           duration: 3000
