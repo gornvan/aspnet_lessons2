@@ -1,15 +1,18 @@
 import { NgModule } from "@angular/core";
-import { RouterModule, Routes, provideRouter, RouterOutlet } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from "../auth/login/loginForm.component";
 import { UserListComponent } from "../users/user-list/user-list.component";
+import { UserDeleteConfirmationComponent } from "../users/user-delete-confirmation/user-delete-confirmation.component";
 
 export const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'users', component: UserListComponent, 
+  { path: 'users',
     children: [
-      { path: 'details', redirectTo: 'users' }, // todo create user details page
-      { path: 'edit', redirectTo: 'users' }  // todo create user editing page
+      { path: '',  component: UserListComponent },
+      { path: 'details', redirectTo: '/users/' }, // todo create user details page
+      { path: 'edit', redirectTo: '/users/' },  // todo create user editing page
+      { path: 'delete/:email', component: UserDeleteConfirmationComponent },  // todo create user editing page
     ]
   },
   { path: '**', redirectTo: 'users' },

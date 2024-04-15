@@ -24,6 +24,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; // Import MatProgressSpinnerModule
 import { MatButtonModule } from '@angular/material/button';
+import { UserDeleteConfirmationComponent } from './users/user-delete-confirmation/user-delete-confirmation.component';
 
 
 /***
@@ -47,7 +48,12 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatButtonModule,
   ],
-  declarations: [AppComponent, LoginComponent, UserListComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    UserListComponent,
+    UserDeleteConfirmationComponent
+  ],
   bootstrap: [AppComponent],
   providers: [
     {
