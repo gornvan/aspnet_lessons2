@@ -14,8 +14,8 @@
             <td>{{ user.FullName }}</td>
             <td>{{ user.Role }}</td>
             <td>
-                <button>Edit</button>
-                <button>Delete</button>
+                <a [routerLink]="['/users', user.Email]"><span>Edit</span></a>
+                <a [routerLink]="['/users/delete/', user.Email]"><span>Delete</span></a>
             </td>
         </tr>
     </tbody>
