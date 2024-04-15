@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class UserListComponent implements OnInit {
     users: UserBriefModel[] = [];
+    public title = "Users List";
 
     constructor(
         private router: Router,
