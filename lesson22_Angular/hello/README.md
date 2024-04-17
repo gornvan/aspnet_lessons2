@@ -12,7 +12,10 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Running unit tests
 
 1 - set Chrome path
+cmd:
 `set CHROME_BIN="C:\Program Files\Google\Chrome\Application\chrome.exe"`
+bash:
+`export CHROME_BIN="C:\Program Files\Google\Chrome\Application\chrome.exe"`
 2 - run the tests `npm test`
 
 ## Running end-to-end tests
