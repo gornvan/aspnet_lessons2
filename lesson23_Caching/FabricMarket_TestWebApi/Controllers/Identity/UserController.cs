@@ -55,5 +55,25 @@ namespace FabricMarket_TestWebApi.Controllers.Identity
 
             return Ok(users);
         }
+
+
+        [HttpGet("WaitForAMinute")]
+        [RoleBasedAuthorizationFilter(Role = UserRoleEnum.Administrator)]
+        public void WaitForAMinute()
+        {
+            var waitingTask = new Task<DateTime>(WaitForAMinuteInternal);
+            waitingTask.RunSynchronously();
+            var res = waitingTask.Result; // do not use Result, await whatever Task You have instead
+        }
+
+        private DateTime WaitForAMinuteInternal()
+        {
+            var targetTime = DateTime.Now.AddMinutes(1);
+            while (DateTime.Now < targetTime)
+            {
+
+            }
+            return DateTime.Now;
+        }
     }
 }
