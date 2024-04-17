@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using System.Text;
 using System.Text.Encodings.Web;
 using ILogger = Serilog.ILogger;
@@ -19,13 +20,15 @@ namespace FabricMarket_BLL.Services.Identity
         private readonly IUserEmailStore<User> _emailStore;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
+        private readonly IMemoryCache _cache;
 
         public UserService(
             IUnitOfWork unitOfWork,
             UserManager<User> userManager,
             IUserStore<User> userStore,
             IEmailSender emailSender,
-            ILogger logger)
+            ILogger logger,
+            IMemoryCache cache)
         {
             _unitOfWork = unitOfWork;
             _userManager = userManager;
@@ -33,6 +36,7 @@ namespace FabricMarket_BLL.Services.Identity
             _emailStore = GetEmailStore();
             _emailSender = emailSender;
             _logger = logger;
+            _cache = cache;
         }
 
         private IUserEmailStore<User> GetEmailStore()
@@ -128,12 +132,14 @@ namespace FabricMarket_BLL.Services.Identity
 
         public Task<User> DeleteUser(string userId)
         {
+            _cache.Remove(UserRoleCacheKey(userId));
             throw new NotImplementedException();
         }
 
 
         public Task<User> SetUserRole(string userId, UserRoleEnum newRole)
         {
+            _cache.Set(UserRoleCacheKey(userId), newRole);
             throw new NotImplementedException();
         }
 
@@ -149,11 +155,24 @@ namespace FabricMarket_BLL.Services.Identity
 
         public async Task<UserRoleEnum?> GetUserRole(string userId)
         {
+            // check if role is already cached
+            if (_cache.TryGetValue<UserRoleEnum>(
+                UserRoleCacheKey(userId), out var cachedRole))
+            {
+                return cachedRole;
+            }
+
             var repo = _unitOfWork.GetRepository<User>();
 
             var user = await repo.AsReadOnlyQueryable().FirstOrDefaultAsync(u => u.Id == userId);
 
+            if (user != null) {
+                _cache.Set(UserRoleCacheKey(userId), user.Role);
+            }
+
             return user?.Role;
         }
+
+        private static string UserRoleCacheKey(string userId) => $"userRole_{userId}";
     }
 }
