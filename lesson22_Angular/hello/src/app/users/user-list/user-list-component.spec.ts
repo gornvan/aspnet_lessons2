@@ -3,8 +3,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserListComponent } from './user-list.component';
 import { IUserService } from './user-list-service.interface';
 
-import { of } from 'rxjs';
-import { UserBriefModel } from '../../../models/identity/UserBriefModel';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../../routing/app-routing.module';
@@ -25,20 +23,11 @@ describe('UserDeleteConfirmationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppRoutingModule,
+      imports: [
+        AppRoutingModule,
         BrowserModule,
-        FormsModule,
-        HttpClientModule,
         CommonModule,
-        BoldDirective,
-    
-        // material:
-        MatCardModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatProgressSpinnerModule,
-        MatInputModule,
-        MatButtonModule,],
+      ],
       declarations: [UserListComponent],
       providers: [{
         provide: IUserService,
