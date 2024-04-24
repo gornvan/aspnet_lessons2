@@ -15,6 +15,8 @@ namespace MVC_With_Google_Auth.Controllers
 
         public IActionResult Index()
         {
+            var context = HttpContext;
+            var user = User;
             return View();
         }
 
